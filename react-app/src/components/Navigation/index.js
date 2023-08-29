@@ -10,6 +10,9 @@ function Navigation({ isLoaded }){
 	return (
 		<ul>
 			<li>
+				MarketIt
+			</li>
+			<li>
 				<NavLink exact to="/">Home</NavLink>
 			</li>
 			{isLoaded && (
