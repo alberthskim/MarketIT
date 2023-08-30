@@ -12,11 +12,11 @@ function LandingPage() {
             </div>
             <div className="right-side">
                 <h1 style={{color: 'white'}}>Get Started</h1>
-                <div className="buttons" onClick={() => history.push('/login')}>
-                    <button className="log-in-button">
+                <div className="buttons">
+                    <button className="log-in-button" onClick={() => history.push('/login')}>
                         Log In
                     </button>
-                    <button className='sign-up-button'>
+                    <button className='sign-up-button' onClick={() => history.push('/signup')}>
                         Sign Up
                     </button>
                 </div>
