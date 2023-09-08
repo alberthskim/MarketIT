@@ -4,6 +4,7 @@ import "./landingpage.css"
 
 function LandingPage() {
     const history = useHistory();
+    
     return (
         <div className="landing-container">
             <div className="left-side" style={{color: 'white'}}>

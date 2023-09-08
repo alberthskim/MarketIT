@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<div className="navigation-container">
 			<div>
-				<NavLink exact to='/'>MarketIt</NavLink>
+				{/* <NavLink exact to='/'>MarketIt</NavLink> */}
 			</div>
 			{/* <li>
 				<NavLink exact to="/">Home</NavLink>
