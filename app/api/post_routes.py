@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Post
+from app.forms import PostForm
 from .auth_routes import validation_errors_to_error_messages
 
 post_routes = Blueprint('posts', __name__)
@@ -30,7 +31,28 @@ def user_posts(userId):
 
 
 ## Create A Post
+@post_routes.route('/new', methods=['POST'])
+@login_required
+def create_post():
+    """
+    Create a post
+    """
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        post = Post(
+            user_id = current_user.id,
+            images = form.data['images'],
+            categories = form.data['categories'],
+            title = form.data['title'],
+            content = form.data['content']
+        )
 
+        db.session.add(post)
+        db.session.commit()
+
+        post_dict = post.to_dict()
+        return post_dict
 
 
 
