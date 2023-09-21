@@ -56,11 +56,37 @@ def create_post():
 
 
 
-
 ## Update a Post
+@post_routes.route('/<int:postId', methods=['PUT'])
+@login_required
+def update_post(postId):
+    """
+    Update a post
+    """
+    post = Post.query.get(postId)
 
+    form = PostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
+    if form.validate_on_submit():
+        post.categories = form.data['categories'],
+        post.title = form.data['title'],
+        post.content = form.data['content']
 
+        db.session.commit()
+        return post.to_dict()
 
 
 ## Delete a Post
+@post_routes.route('/<int:postId>', methods=['DELETE'])
+@login_required
+def delete_post(postId):
+    """
+    Delete a post
+    """
+
+    post = Post.query.get(postId)
+
+    db.session.delete(post)
+    db.session.commit()
+    return {'message': 'Post Has Been Successfully Deleted!'}
