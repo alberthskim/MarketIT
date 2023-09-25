@@ -6,6 +6,8 @@ from .auth_routes import validation_errors_to_error_messages
 
 post_routes = Blueprint('posts', __name__)
 
+
+## WORKING!!!
 ## Get all Posts
 @post_routes.route('/')
 # @login_required
@@ -57,7 +59,7 @@ def create_post():
 
 
 ## Update a Post
-@post_routes.route('/<int:postId', methods=['PUT'])
+@post_routes.route('/<int:postId>', methods=['PUT'])
 @login_required
 def update_post(postId):
     """
