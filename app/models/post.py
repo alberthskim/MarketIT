@@ -13,7 +13,7 @@ class Post(db.Model):
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
 
-    user = db.relationship('User', back_populates='products')
+    user = db.relationship('User', back_populates='posts')
 
     def to_dict(self):
         return {
