@@ -8,20 +8,29 @@
     padding-top: 15rem;
 }
 
+
+.email-area {
+    /* border: 1px solid red; */
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+    width: 88.5%;
+}
+
+
 .form-area {
     border: 1px solid green;
     margin-top: 1rem;
     height: 40%;
-    width: 18%;
+    width: 20%;
 }
 
 .login-form {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
     height: 40%;
 }
 
-/* .continue-button {
-
-} */
+.continue-button {
+    padding: .5rem 1rem;
+}

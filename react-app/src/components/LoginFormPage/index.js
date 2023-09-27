@@ -32,12 +32,14 @@ function LoginFormPage() {
               ))}
             </ul>
             <label className="email-input">
-              Email
               <input
+                className="email-area"
                 type="text"
+                placeholder="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                autoFocus
               />
             </label>
             {/* <label className="password-input">

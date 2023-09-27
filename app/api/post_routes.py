@@ -12,4 +12,3 @@ def all_posts():
     """
     Query for all posts
     """
-    posts =
