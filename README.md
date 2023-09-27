@@ -1,4 +1,27 @@
-# Flask React Project
+# MarketIt
+
+Welcome to MarketIt! MarketIT is a fullstack application clone, inspired by Craigslist but a more intuitive version. Post your advertisment or your request and have people reach out to you.
+
+## Overview
+
+To continue my passion of learning, I created this project to get accustomed to two technologies/feature that I am interested in.
+
+-AWS
+-Websocket
+
+## Wiki Links
+
+COMING SOON
+
+## Technologies
+
+COMING SOON
+
+## Getting Started
+
+COMING SOON
+
+<!-- # Flask React Project
 
 This is the starter for the Flask React project.
 
@@ -145,4 +168,4 @@ successfully deployed your Flask application to Render! You can find the URL for
 your site just below the name of the Web Service at the top of the page.
 
 [Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+[Dashboard]: https://dashboard.render.com/ -->

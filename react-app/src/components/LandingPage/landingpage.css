@@ -1,0 +1,45 @@
+.landing-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    /* border: 1px solid red; */
+}
+
+.left-side {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #00002e;
+    /* border: 1px solid green; */
+}
+
+.right-side {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    /* border: 1px solid blue; */
+}
+
+.buttons {
+    display: flex;
+    gap: 2rem;
+}
+
+.log-in-button, .sign-up-button {
+    padding: 12px 50px;
+    background-color: #3d46ff;
+    border: 1px solid #3d46ff;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.log-in-button:hover, .sign-up-button:hover {
+    background-color: blue;
+}

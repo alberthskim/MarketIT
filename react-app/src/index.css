@@ -1,1 +1,5 @@
 /* TODO Add site wide styles */
+* {
+    margin: 0;
+    /* background-color: #00002e; */
+}
