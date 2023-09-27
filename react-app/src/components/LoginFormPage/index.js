@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -10,6 +11,7 @@ function LoginFormPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [visible, setVisible] = useState(true)
 
   if (sessionUser) return <Redirect to="/home" />;
 
@@ -21,16 +23,17 @@ function LoginFormPage() {
     }
   };
 
+  const toggleToInput = () => {
+    setVisible(!visible)
+  }
+
   return (
     <div className="login-page-container">
-      <h1>Welcome Back</h1>
       <div className="form-area">
           <form className="login-form" onSubmit={handleSubmit}>
-            <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul>
+            {visible ? (
+            <>
+            <h1 style={{color:'#2e343a', paddingBottom:"1rem", textAlign:'center'}}>Welcome Back</h1>
             <label className="email-input">
               <input
                 className="email-area"
@@ -42,17 +45,48 @@ function LoginFormPage() {
                 autoFocus
               />
             </label>
-            {/* <label className="password-input">
-              Password
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </label> */}
-            <button className="continue-button" type="submit">Continue</button>
+              <button className="continue-button" type="submit" onClick={toggleToInput}>
+                Continue
+              </button>
+              </>
+            ) : (
+              <>
+                <h1 style={{color:'#2e343a', paddingBottom:"1rem", textAlign:'center'}}>Enter Your Password</h1>
+                <label className="email-input">
+                  <input
+                    className="email-area"
+                    type="text"
+                    placeholder="Email Address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoFocus
+                  />
+                  {/* {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))} */}
+                </label>
+                <label className="password-input">
+                  <input
+                    className="password-area"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    autoFocus
+                  />
+                  {/* {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))} */}
+                </label>
+                <button className="continue-button" type="submit" onClick={handleSubmit}>
+                Continue
+                </button>
+              </>
+            )}
           </form>
+          <p style={{textAlign:"center", paddingTop: '1rem', color:'gray'}}>Don't Have An Account? <Link to='/signup' style={{color:"#0ba37f", textDecoration:'none'}}>Sign Up</Link></p>
       </div>
     </div>
   );
