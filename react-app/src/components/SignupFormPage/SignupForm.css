@@ -1,0 +1,36 @@
+.sign-up-container {
+    /* border: 1px solid green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15rem;
+}
+
+
+.signup-form {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+}
+
+.signup-form-area {
+    margin-top: 1rem;
+    height: 40%;
+    width: 20%;
+}
+
+.signup-username-area, .signup-email-area, .signup-password-area, .signup-confirm-password-area {
+    /* border: 1px solid red; */
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    width: 88.5%;
+}
+
+.signup-button {
+    padding: 1rem 1rem;
+    color: white;
+    background-color: #0ba37f;
+    border: 1px solid #0ba37f;
+    border-radius: 4px;
+}

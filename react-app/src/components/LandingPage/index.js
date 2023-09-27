@@ -1,10 +1,9 @@
-import LoginFormModal from "../LoginFormModal";
 import { useHistory } from "react-router-dom";
 import "./landingpage.css"
 
 function LandingPage() {
     const history = useHistory();
-    
+
     return (
         <div className="landing-container">
             <div className="left-side" style={{color: 'white'}}>
