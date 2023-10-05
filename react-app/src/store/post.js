@@ -94,8 +94,22 @@ export const deletePostThunk = (postId) => async (dispatch) => {
 }
 
 
+const initialState = {}
 const postReducer = (state = initialState, action) => {
-    
+    let newState = {}
+    switch (action.type) {
+        case ALL_POSTS:
+            newState = {...state, ...action.posts}
+            return newState
+        case USER_POSTS:
+            return
+        case CREATE_POST:
+            return
+        case UPDATE_POST:
+            return
+        case DELETE_POST:
+            return
+    }
 }
 
 export default postReducer
