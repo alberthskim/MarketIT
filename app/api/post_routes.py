@@ -47,7 +47,8 @@ def create_post():
             images = form.data['images'],
             categories = form.data['categories'],
             title = form.data['title'],
-            content = form.data['content']
+            content = form.data['content'],
+            location = form.data['location']
         )
 
         db.session.add(post)

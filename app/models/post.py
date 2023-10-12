@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from datetime import datetime
 
 class Post(db.Model):
     __tablename__='posts'
@@ -11,7 +12,9 @@ class Post(db.Model):
     images = db.Column(db.String)
     categories = db.Column(db.String)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
+    content = db.Column(db.String(5000))
+    location = db.Column(db.String(100))
+    created_at = db.Column(db.DateTime, default = datetime.utcnow())
 
     user = db.relationship('User', back_populates='posts')
 
@@ -22,5 +25,7 @@ class Post(db.Model):
             "images": self.images,
             "categories": self.categories,
             "title": self.title,
-            "content": self.content
+            "content": self.content,
+            "location": self.location,
+            "createdAt": self.created_at
         }
