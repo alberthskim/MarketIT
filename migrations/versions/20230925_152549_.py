@@ -24,7 +24,9 @@ def upgrade():
     sa.Column('images', sa.String(), nullable=True),
     sa.Column('categories', sa.String(), nullable=True),
     sa.Column('title', sa.String(length=100), nullable=True),
-    sa.Column('content', sa.String(length=500), nullable=True),
+    sa.Column('content', sa.String(length=5000), nullable=True),
+    sa.Column('location', sa.String(length=100), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

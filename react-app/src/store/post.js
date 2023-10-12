@@ -109,6 +109,9 @@ const postReducer = (state = initialState, action) => {
             return
         case DELETE_POST:
             return
+        default: {
+            return state;
+        }
     }
 }
 
