@@ -1,25 +1,44 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { createPostThunk } from "../../store/post";
+import { useHistory } from "react-router-dom";
 
 function PostFormPage() {
 	const dispatch = useDispatch();
-	// const [images, setImages] = useState("");
+    const history = useHistory();
+	const [images, setImages] = useState("");
 	const [category, setCategory] = useState("");
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
     const [location, setLocation] = useState("");
-	const [errors, setErrors] = useState([]);
+	const [errors, setErrors] = useState({});
+    const [submitted, setSubmitted] = useState(false);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+
+        if(!Object.values(errors).length) {
+            const newPost = {
+                images: images,
+                categories: category,
+                title: title,
+                content: content,
+                location: location
+            }
+            await dispatch(createPostThunk(newPost))
+            return history.push('/home')
+        } else {
+            setErrors(data)
+        }
+    }
+
+    if(!user) history.push('/login')
 
 	return (
 		<>
 			<h1>What would you like to market today?</h1>
 			<form>
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
 				<label>
 					Title
 					<input
@@ -28,6 +47,9 @@ function PostFormPage() {
 						onChange={(e) => setTitle(e.target.value)}
 						required
 					/>
+                    {validationErrors.title && submitted && (
+                            <p className="errors">{validationErrors.title}</p>
+                    )}
 				</label>
                 <div className="category-field">
                     <div className="category-label">
