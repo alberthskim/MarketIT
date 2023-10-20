@@ -7,13 +7,17 @@ function PostFormPage() {
 	const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
-	// const [images, setImages] = useState("");
-	const [category, setCategory] = useState("");
+	const [images, setImages] = useState("https://i.imgur.com/VikcUQA.png");
+	const [category, setCategory] = useState("For Sale");
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
     const [location, setLocation] = useState("");
 	const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+
+    const chooseCategory = (e) => {
+        setCategory(e.target.value)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,12 +25,14 @@ function PostFormPage() {
 
         if(!Object.values(errors).length) {
             const newPost = {
-                // images: images,
+                user_id: user.id,
+                images: images,
                 categories: category,
                 title: title,
                 content: content,
                 location: location
             }
+            console.log("this is new post", newPost)
             await dispatch(createPostThunk(newPost))
             return history.push('/home')
         }
@@ -55,7 +61,7 @@ function PostFormPage() {
                         <p>Category</p>
                     </div>
                     <div className="category-options">
-                        <select className="select-field" value={category} onChange={(e)=> setCategory(e.target.value)}>
+                        <select className="select-field" value={category} onChange={chooseCategory}>
                             <option value="For Sale">For Sale</option>
                             <option value="Jobs">Jobs</option>
                             <option value="Relationship">Relationship</option>

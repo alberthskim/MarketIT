@@ -51,13 +51,15 @@ export const getUserPostsThunk = (userId) => async dispatch => {
 }
 
 export const createPostThunk = (post) => async dispatch => {
-    const response = await fetch('/api/posts/new', {
+    const response = await fetch(`/api/posts/new`, {
         method: "POST",
-        body: post
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(post)
     })
 
     if (response.ok) {
         const newPost = await response.json()
+        console.log("This is inside thunk", newPost)
         await dispatch(createAPost(newPost))
         return newPost
     } else {
@@ -99,12 +101,15 @@ const postReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case ALL_POSTS:
-            newState = {...state, ...action.posts}
+            newState = {...state}
+            action.posts.forEach(post => newState[post.id] = post)
             return newState
         case USER_POSTS:
             return
         case CREATE_POST:
-            return
+            newState = {...state}
+            newState[action.post.id] = action.post
+            return newState
         case UPDATE_POST:
             return
         case DELETE_POST:
