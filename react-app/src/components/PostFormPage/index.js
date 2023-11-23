@@ -7,7 +7,7 @@ function PostFormPage() {
 	const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector(state => state.session.user)
-	const [images, setImages] = useState("https://i.imgur.com/VikcUQA.png");
+	const [image, setImage] = useState("https://i.imgur.com/VikcUQA.png");
 	const [category, setCategory] = useState("For Sale");
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
@@ -26,7 +26,7 @@ function PostFormPage() {
         if(!Object.values(errors).length) {
             const newPost = {
                 user_id: user.id,
-                images: images,
+                image: image,
                 categories: category,
                 title: title,
                 content: content,
@@ -43,7 +43,7 @@ function PostFormPage() {
 	return (
 		<>
 			<h1>What would you like to market today?</h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit} encType="multipart/form-data">
 				<label>
 					Title
 					<input
@@ -69,6 +69,16 @@ function PostFormPage() {
                             <option value="Random">Random</option>
                         </select>
                     </div>
+                </div>
+                <div className="image-field">
+                    <div className="image-label">
+                        <p>Add An Image</p>
+                    </div>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setImage(e.target.files[0])}
+                    />
                 </div>
 				<label>
 					Content

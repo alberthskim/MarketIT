@@ -51,20 +51,19 @@ export const getUserPostsThunk = (userId) => async dispatch => {
 }
 
 export const createPostThunk = (post) => async dispatch => {
+    console.log("POST INSIDE THUNK", post)
     const response = await fetch(`/api/posts/new`, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(post)
+        body: post
     })
 
     if (response.ok) {
         const newPost = await response.json()
-        console.log("This is inside thunk", newPost)
+        // console.log("This is inside thunk", newPost)
         await dispatch(createAPost(newPost))
         return newPost
     } else {
-        const errors = await response.json();
-        return errors
+        console.log("There was an error making post")
     }
 }
 

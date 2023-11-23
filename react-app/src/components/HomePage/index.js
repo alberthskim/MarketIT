@@ -24,11 +24,11 @@ function HomePage() {
                 {posts.map((post) => (
                     <div className="individual-posts">
                         <h2 className="post-title">{post.title}</h2>
-                        <img className='post-images' src={post.images} />
+                        <img className='post-images' src={post.image} />
                         <p>{post.categories}</p>
                         <p>{post.content}</p>
                         <p>{post.location}</p>
-                        <p>{post.createdAt.slice(0, 17)}</p>
+                        <p>Posted on {post.createdAt.slice(0, 17)}</p>
                         <button onClick={() => alert("Coming Soon!")}>Message Me</button>
                     </div>
                 ))}
