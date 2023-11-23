@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app.models import db, Post
 from app.forms import PostForm
 from .auth_routes import validation_errors_to_error_messages
+from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
+
 
 post_routes = Blueprint('posts', __name__)
 
@@ -33,7 +35,7 @@ def user_posts(userId):
 
 
 ## Create A Post
-@post_routes.route('/new', methods=['POST'])
+@post_routes.route("/new", methods=['POST'])
 @login_required
 def create_post():
     """
@@ -42,9 +44,17 @@ def create_post():
     form = PostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+
+        image = form.data['image']
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+
+        if "url" not in upload:
+            return "<h1>URL does not exist</h1>"
+
         post = Post(
             user_id = current_user.id,
-            images = form.data['images'],
+            image = upload["url"],
             categories = form.data['categories'],
             title = form.data['title'],
             content = form.data['content'],
@@ -53,9 +63,14 @@ def create_post():
 
         db.session.add(post)
         db.session.commit()
-
         post_dict = post.to_dict()
         return post_dict
+
+    if form.errors:
+        return form.errors
+
+    return
+
 
 
 
@@ -90,6 +105,12 @@ def delete_post(postId):
 
     post = Post.query.get(postId)
 
-    db.session.delete(post)
-    db.session.commit()
-    return {'message': 'Post Has Been Successfully Deleted!'}
+    file_delete = remove_file_from_s3(post.image)
+
+    if file_delete:
+        db.session.delete(post)
+        db.session.commit()
+        return {'message': 'Post Has Been Successfully Deleted!'}
+
+    else:
+        return "<h1>File Delete Error!</h1>"
