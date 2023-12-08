@@ -42,17 +42,24 @@ def create_post():
     Create a post
     """
     form = PostForm()
+    print("Form ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form)
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("HI ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form.data)
+    print("HI 2 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form['csrf_token'].data)
+
+
     if form.validate_on_submit():
 
         image = form.data['image']
+        print("Image ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", image)
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
+        print("THIS IS THE UPLOAD ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", upload)
 
         if "url" not in upload:
             return "<h1>URL does not exist</h1>"
 
-        post = Post(
+        new_post = Post(
             user_id = current_user.id,
             image = upload["url"],
             categories = form.data['categories'],
@@ -61,15 +68,15 @@ def create_post():
             location = form.data['location']
         )
 
-        db.session.add(post)
+        db.session.add(new_post)
         db.session.commit()
-        post_dict = post.to_dict()
-        return post_dict
+        post_dict = new_post.to_dict()
+
 
     if form.errors:
-        return form.errors
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
-    return
+    return post_dict
 
 
 

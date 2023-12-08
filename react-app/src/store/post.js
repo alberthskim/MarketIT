@@ -52,9 +52,12 @@ export const getUserPostsThunk = (userId) => async dispatch => {
 
 export const createPostThunk = (post) => async dispatch => {
     console.log("POST INSIDE THUNK", post)
-    const response = await fetch(`/api/posts/new`, {
+    const response = await fetch('/api/posts/new', {
         method: "POST",
-        body: post
+        headers: {
+			"Content-Type": "application/json",
+		},
+        body: JSON.stringify(post)
     })
 
     if (response.ok) {
