@@ -45,7 +45,6 @@ def create_post():
     print("Form ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form)
     form['csrf_token'].data = request.cookies['csrf_token']
     print("HI ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form.data)
-    print("HI 2 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form['csrf_token'].data)
 
 
     if form.validate_on_submit():

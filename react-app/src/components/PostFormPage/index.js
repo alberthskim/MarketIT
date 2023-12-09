@@ -8,10 +8,10 @@ function PostFormPage() {
     const history = useHistory();
     const user = useSelector(state => state.session.user)
 	const [image, setImage] = useState("https://i.imgur.com/VikcUQA.png");
-	const [category, setCategory] = useState("For Sale");
-	const [title, setTitle] = useState("LOOKING FOR OFFICE SPACE");
-	const [content, setContent] = useState("Looking for Office space to rent");
-    const [location, setLocation] = useState("Los Angeles");
+	const [category, setCategory] = useState("");
+	const [title, setTitle] = useState("");
+	const [content, setContent] = useState("");
+    const [location, setLocation] = useState("");
 	const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
 
@@ -24,17 +24,18 @@ function PostFormPage() {
         setSubmitted(true);
 
         if(!Object.values(errors).length) {
-            console.log("THIS IS THE IMAGE", image)
-            const newPost = {
-                user_id: user.id,
-                image: image,
-                categories: category,
-                title: title,
-                content: content,
-                location: location
-            }
-            console.log("this is new post", newPost)
-            await dispatch(createPostThunk(newPost))
+
+            const formData = new FormData()
+
+            formData.append('user_id', user.id)
+            formData.append('image', image)
+            formData.append('categories', category)
+            formData.append('title', title)
+            formData.append('content', content)
+            formData.append('location', location)
+
+            await dispatch(createPostThunk(formData))
+
             return history.push('/home')
         }
     }

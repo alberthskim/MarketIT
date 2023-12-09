@@ -4,6 +4,7 @@ import os
 import uuid #module that creates unique hashes
 
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif"}
+ALLOWED_IMAGES = {'png', 'jpeg', 'jpg'}
 
 BUCKET_NAME = os.environ.get("S3_BUCKET")
 S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
