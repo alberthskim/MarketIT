@@ -15,25 +15,24 @@ function PostFormPage() {
 	const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
 
-    const chooseCategory = (e) => {
-        setCategory(e.target.value)
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSubmitted(true);
 
         if(!Object.values(errors).length) {
-            const newPost = {
-                user_id: user.id,
-                image: image,
-                categories: category,
-                title: title,
-                content: content,
-                location: location
-            }
-            console.log("this is new post", newPost)
-            await dispatch(createPostThunk(newPost))
+
+            const formData = new FormData()
+
+            formData.append('user_id', user.id)
+            formData.append('image', image)
+            formData.append('categories', category)
+            formData.append('title', title)
+            formData.append('content', content)
+            formData.append('location', location)
+
+            await dispatch(createPostThunk(formData))
+
             return history.push('/home')
         }
     }
@@ -61,10 +60,10 @@ function PostFormPage() {
                         <p>Category</p>
                     </div>
                     <div className="category-options">
-                        <select className="select-field" value={category} onChange={chooseCategory}>
+                        <select className="select-field" value={category} onChange={e => setCategory(e.target.value)}>
                             <option value="For Sale">For Sale</option>
                             <option value="Jobs">Jobs</option>
-                            <option value="Relationship">Relationship</option>
+                            <option value="Relationships">Relationships</option>
                             <option value="Inquiries">Inquiries</option>
                             <option value="Random">Random</option>
                         </select>

@@ -9,7 +9,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
-    image = db.Column(db.String)
+    image = db.Column(db.String, nullable=False)
     categories = db.Column(db.String)
     title = db.Column(db.String(100))
     content = db.Column(db.String(5000))
