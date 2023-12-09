@@ -8,16 +8,13 @@ function PostFormPage() {
     const history = useHistory();
     const user = useSelector(state => state.session.user)
 	const [image, setImage] = useState("https://i.imgur.com/VikcUQA.png");
-	const [category, setCategory] = useState("");
+	const [category, setCategory] = useState("For Sale");
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
     const [location, setLocation] = useState("");
 	const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
 
-    const chooseCategory = (e) => {
-        setCategory(e.target.value)
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -63,10 +60,10 @@ function PostFormPage() {
                         <p>Category</p>
                     </div>
                     <div className="category-options">
-                        <select className="select-field" value={category} onChange={chooseCategory}>
+                        <select className="select-field" value={category} onChange={e => setCategory(e.target.value)}>
                             <option value="For Sale">For Sale</option>
                             <option value="Jobs">Jobs</option>
-                            <option value="Relationship">Relationship</option>
+                            <option value="Relationships">Relationships</option>
                             <option value="Inquiries">Inquiries</option>
                             <option value="Random">Random</option>
                         </select>
