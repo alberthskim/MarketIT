@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
+import HomePage from "./components/HomePage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
+import PostFormPage from "./components/PostFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,11 +24,17 @@ function App() {
           <Route exact path='/'>
             <LandingPage />
           </Route>
+          <Route exact path='/home'>
+            <HomePage />
+          </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/posts/new">
+            <PostFormPage />
           </Route>
         </Switch>
       )}

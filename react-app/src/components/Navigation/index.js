@@ -1,26 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import ProfileButton from './ProfileButton';
+import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const history = useHistory()
 
 	if(sessionUser) <NavLink exact to ='/home'></NavLink>
+
 	return (
 		<div className="navigation-container">
-			<div>
-				{/* <NavLink exact to='/'>MarketIt</NavLink> */}
+			<div className="marketIt">
+				<NavLink exact to='/home'>MarketIt</NavLink>
 			</div>
-			{/* <li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
-			{isLoaded && (
-				<li>
+			{isLoaded && sessionUser && (
+			<>
+				<button className="post-button" onClick={() => history.push('/posts/new')}>Create Post</button>
+				<div>
 					<ProfileButton user={sessionUser} />
-				</li>
-			)} */}
+				</div>
+			</>
+			)}
 		</div>
 	);
 }

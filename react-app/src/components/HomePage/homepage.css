@@ -1,0 +1,19 @@
+
+.post-contents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.individual-posts {
+    border: 1px solid black;
+}
+
+.post-title {
+    text-align: center;
+}
+
+.post-images {
+    height: 400px;
+    width: 400px;
+    object-fit: fit;
+}
