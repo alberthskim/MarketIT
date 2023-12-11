@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
-import { getAllPostThunk } from "../../store/post";
+import { deletePostThunk, getAllPostThunk } from "../../store/post";
 import './homepage.css'
 
 
@@ -22,15 +22,30 @@ function HomePage() {
         <div className="home-page-container">
             <div className="post-contents">
                 {posts.map((post) => (
-                    <div className="individual-posts">
-                        <h2 className="post-title">{post.title}</h2>
-                        <img className='post-images' src={post.image} />
-                        <p>{post.categories}</p>
-                        <p>{post.content}</p>
-                        <p>{post.location}</p>
-                        <p>Posted on {post.createdAt.slice(0, 17)}</p>
-                        <button onClick={() => alert("Coming Soon!")}>Message Me</button>
-                    </div>
+                    <>
+                        {user.id === post.userId ? (
+                            <div className="individual-posts">
+                                <h2 className="post-title">{post.title}</h2>
+                                <img className='post-images' src={post.image} alt="individual-post"/>
+                                <p>{post.categories}</p>
+                                <p>{post.content}</p>
+                                <p>{post.location}</p>
+                                <p>Posted on {post.createdAt.slice(0, 17)}</p>
+                                <button onClick={() => alert("Coming Soon!")}>Edit Post</button>
+                                <button onClick={() => dispatch(deletePostThunk(post.id))}>Delete Post</button>
+                            </div>
+                        ) : (
+                            <div className="individual-posts">
+                                <h2 className="post-title">{post.title}</h2>
+                                <img className='post-images' src={post.image} alt="individual-post"/>
+                                <p>{post.categories}</p>
+                                <p>{post.content}</p>
+                                <p>{post.location}</p>
+                                <p>Posted on {post.createdAt.slice(0, 17)}</p>
+                                <button onClick={() => alert("Coming Soon!")}>Message Me</button>
+                            </div>
+                        )}
+                    </>
                 ))}
             </div>
         </div>
