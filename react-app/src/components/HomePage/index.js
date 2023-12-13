@@ -10,6 +10,8 @@ function HomePage() {
     const dispatch = useDispatch();
     const posts = Object.values(useSelector(state => state.posts))
     const user = useSelector(state => state.session.user)
+    const excludeUserPosts = posts.filter(post => post.userId !== user.id)
+    console.log("not user posts", excludeUserPosts)
 
 
     useEffect(() => {
@@ -21,7 +23,7 @@ function HomePage() {
     return (
         <div className="home-page-container">
             <div className="post-contents">
-                {posts.map((post) => (
+                {/* {posts.map((post) => (
                     <>
                         {user.id === post.userId ? (
                             <div className="individual-posts">
@@ -46,6 +48,17 @@ function HomePage() {
                             </div>
                         )}
                     </>
+                ))} */}
+                {excludeUserPosts.map((post) => (
+                    <div className="individual-posts">
+                        <h2 className="post-title">{post.title}</h2>
+                        <img className='post-images' src={post.image} alt="individual-post"/>
+                        <p>{post.categories}</p>
+                        <p>{post.content}</p>
+                        <p>{post.location}</p>
+                        <p>Posted on {post.createdAt.slice(0, 17)}</p>
+                        <button onClick={() => alert("Coming Soon!")}>Message Me</button>
+                    </div>
                 ))}
             </div>
         </div>
