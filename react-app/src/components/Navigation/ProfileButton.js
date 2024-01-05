@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
+import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -46,6 +48,9 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li>
+              <button onClick={() => history.push('/manage-posts')}>Manage Posts</button>
+            </li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
