@@ -1,5 +1,8 @@
 .profile-dropdown {
   position: absolute;
+  right: 1px;
+  padding: 5px;
+  border: 1px solid black
 }
 
 .hidden {

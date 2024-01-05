@@ -12,11 +12,12 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className="navigation-container">
-			<div className="marketIt">
+			{/* <div className="marketIt">
 				<NavLink exact to='/home'>MarketIt</NavLink>
-			</div>
+			</div> */}
 			{isLoaded && sessionUser && (
 			<>
+				<div onClick={() => history.push('/home')}>MarketIt Logo</div>
 				<button className="post-button" onClick={() => history.push('/posts/new')}>Create Post</button>
 				<div>
 					<ProfileButton user={sessionUser} />

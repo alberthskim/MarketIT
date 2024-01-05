@@ -7,9 +7,6 @@ function LandingPage() {
     return (
         <div className="landing-container">
             <div className="left-side">
-                {/* <div className="top-left">
-                    MarketIt
-                </div> */}
                 <h1 style={{color: 'white'}}>Welcome To MarketIt</h1>
                 <p style={{color: 'white'}}>A place where you can advertise!</p>
             </div>

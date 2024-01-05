@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #00002e;
+    background-color: #65F0B4;
     /* border: 1px solid green; */
 }
 
@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: rgb(172, 233, 120);
     /* border: 1px solid blue; */
 }
 
@@ -34,8 +34,8 @@
 
 .log-in-button, .sign-up-button {
     padding: 12px 50px;
-    background-color: #3d46ff;
-    border: 1px solid #3d46ff;
+    background-color: #50b643;
+    border: 1px solid #50b643;
     color: white;
     font-size: 16px;
     border-radius: 6px;
@@ -43,5 +43,5 @@
 }
 
 .log-in-button:hover, .sign-up-button:hover {
-    background-color: blue;
+    background-color: rgb(52, 160, 52);
 }
