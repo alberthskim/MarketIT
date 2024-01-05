@@ -33,6 +33,7 @@ function ProfileButton({ user }) {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    history.push('/')
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
@@ -46,14 +47,10 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={() => history.push('/manage-posts')}>Manage Posts</button>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <p>{user.username}</p>
+            <p>{user.email}</p>
+            <button onClick={() => history.push('/manage-posts')}>Manage Posts</button>
+            <button onClick={handleLogout}>Log Out</button>
           </>
         ) : (
           <>

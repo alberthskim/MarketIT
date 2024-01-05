@@ -1,4 +1,7 @@
-
+.home-page-container {
+    /* border: 1px solid red; */
+    padding: 5vh;
+}
 .post-contents {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
