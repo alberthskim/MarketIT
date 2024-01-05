@@ -8,6 +8,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import PostFormPage from "./components/PostFormPage";
+import ManagePost from "./components/ManagePostPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path="/posts/new">
             <PostFormPage />
+          </Route>
+          <Route exact path="/manage-posts">
+            <ManagePost />
           </Route>
         </Switch>
       )}
