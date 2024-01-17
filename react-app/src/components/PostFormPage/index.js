@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPostThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
+import "./PostFormPage.css"
 
 function PostFormPage() {
 	const dispatch = useDispatch();
@@ -40,10 +41,10 @@ function PostFormPage() {
     if(!user) history.push('/login')
 
 	return (
-		<>
-			<h1>What would you like to market today?</h1>
+		<div className="form-page">
+			<h1 className="form-title">What would you like to market today?</h1>
 			<form onSubmit={handleSubmit} encType="multipart/form-data">
-				<label>
+				<label className="title-label">
 					Title
 					<input
 						type="text"
@@ -79,7 +80,7 @@ function PostFormPage() {
                         onChange={(e) => setImage(e.target.files[0])}
                     />
                 </div>
-				<label>
+				<label className="content-label">
 					Content
 					<textarea
 						type="text"
@@ -88,7 +89,7 @@ function PostFormPage() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="location-label">
 					Location
 					<input
 						type="text"
@@ -99,7 +100,7 @@ function PostFormPage() {
 				</label>
 				<button type="submit">Market It!</button>
 			</form>
-		</>
+		</div>
 	);
 }
 
