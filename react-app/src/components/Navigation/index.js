@@ -17,8 +17,7 @@ function Navigation({ isLoaded }){
 			</div> */}
 			{isLoaded && sessionUser && (
 			<>
-				<div onClick={() => history.push('/home')}>MarketIt Logo</div>
-				<button className="post-button" onClick={() => history.push('/posts/new')}>Create Post</button>
+				<div onClick={() => history.push('/home')}><img src="marketit-logo.png" alt="logo" style={{width:'150px', height: '100px'}}/></div>
 				<div>
 					<ProfileButton user={sessionUser} />
 				</div>

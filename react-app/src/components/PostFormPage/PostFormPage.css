@@ -1,32 +1,32 @@
 .form-page {
-    border: 1px solid red;
+    /* border: 1px solid red;
     height: 90vh;
     text-align: center;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 
 .title-label, .category-field, .image-field, .content-label, .location-label {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     /* border: 1px solid purple */
 }
 
 input, textarea {
     /* border: 2px solid black; */
-    padding: 5px;
+    /* padding: 5px;
     width: 25%;
-    align-items: center;
+    align-items: center; */
 }
 
 form {
-    border: 1px solid green;
+    /* border: 1px solid green;
     /* width: 50%; */
-    height: 50%;
+    /* height: 50%;
     text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
 }
 input {
 }

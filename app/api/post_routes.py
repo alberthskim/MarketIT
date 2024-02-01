@@ -42,18 +42,18 @@ def create_post():
     Create a post
     """
     form = PostForm()
-    print("Form ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form)
+    # print("Form ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form)
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("HI ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form.data)
+    # print("HI ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", form.data)
 
 
     if form.validate_on_submit():
 
         image = form.data['image']
-        print("Image ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", image)
+        # print("Image ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", image)
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
-        print("THIS IS THE UPLOAD ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", upload)
+        # print("THIS IS THE UPLOAD ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", upload)
 
         if "url" not in upload:
             return "<h1>URL does not exist</h1>"
@@ -93,12 +93,30 @@ def update_post(postId):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        post.categories = form.data['categories'],
-        post.title = form.data['title'],
-        post.content = form.data['content']
+        image = form.data['image']
+        # print("Image ⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️", image)
+        image.filename = get_unique_filename(image.filename)
+        file_delete = remove_file_from_s3(post.image)
+        upload = upload_file_to_s3(image)
 
+        update_post = Post(
+            user_id = current_user.id,
+            image = upload["url"],
+            categories = form.data['categories'],
+            title = form.data['title'],
+            content = form.data['content'],
+            location = form.data['location']
+        )
+
+        db.session.add(update_post)
         db.session.commit()
-        return post.to_dict()
+        updated_post_dict = update_post.to_dict()
+
+
+    if form.errors:
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+    return updated_post_dict
 
 
 ## Delete a Post

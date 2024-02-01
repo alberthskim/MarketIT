@@ -20,6 +20,7 @@ function HomePage() {
 
     return (
         <div className="home-page-container">
+            <button className="post-button" onClick={() => history.push('/posts/new')}>Create Post</button>
             <div className="post-contents">
                 {excludeUserPosts.map((post) => (
                     <div className="individual-posts">
