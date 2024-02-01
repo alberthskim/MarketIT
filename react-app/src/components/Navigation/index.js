@@ -18,6 +18,7 @@ function Navigation({ isLoaded }){
 			{isLoaded && sessionUser && (
 			<>
 				<div onClick={() => history.push('/home')}><img src="marketit-logo.png" alt="logo" style={{width:'150px', height: '100px'}}/></div>
+				<input style={{width: '50%'}} className="search-input" placeholder='Search For Keywords: Jobs, For Sale, Relationship' type="text" />
 				<div>
 					<ProfileButton user={sessionUser} />
 				</div>
