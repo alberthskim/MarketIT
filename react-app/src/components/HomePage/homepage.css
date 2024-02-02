@@ -6,15 +6,23 @@
 .post-button {
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .post-contents {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    height: 100%;
 }
 
 .individual-posts {
-    border: 1px solid black;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .post-title {
@@ -22,7 +30,11 @@
 }
 
 .post-images {
-    height: 400px;
-    width: 400px;
+    height: 100%;
+    width: 100%;
     object-fit: fit;
+}
+
+.message-button {
+    padding: .5rem;
 }

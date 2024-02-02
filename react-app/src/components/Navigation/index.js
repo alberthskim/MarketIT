@@ -12,12 +12,9 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className="navigation-container">
-			{/* <div className="marketIt">
-				<NavLink exact to='/home'>MarketIt</NavLink>
-			</div> */}
-			{isLoaded && sessionUser && (
+		{isLoaded && sessionUser && (
 			<>
-				<div onClick={() => history.push('/home')}><img src="marketit-logo.png" alt="logo" style={{width:'150px', height: '100px'}}/></div>
+				<div onClick={() => history.push('/home')}><img className="market-logo" src="marketit-logo.png" alt="logo"/></div>
 				<input style={{width: '50%'}} className="search-input" placeholder='Search For Keywords: Jobs, For Sale, Relationship' type="text" />
 				<div>
 					<ProfileButton user={sessionUser} />

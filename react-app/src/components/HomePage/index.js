@@ -30,7 +30,7 @@ function HomePage() {
                         <p>{post.content}</p>
                         <p>{post.location}</p>
                         <p>Posted on {post.createdAt.slice(0, 17)}</p>
-                        <button onClick={() => alert("Coming Soon!")}>Message Me</button>
+                        <button className="message-button" onClick={() => alert("Coming Soon!")}>Message Me</button>
                     </div>
                 ))}
             </div>
