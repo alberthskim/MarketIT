@@ -41,12 +41,13 @@ function PostFormPage() {
     if(!user) history.push('/login')
 
 	return (
-		<div className="form-page">
+		<div className="postform-page">
 			<h1 className="form-title">What would you like to market today?</h1>
-			<form onSubmit={handleSubmit} encType="multipart/form-data">
-				<label className="title-label">
+			<form className="post-form" onSubmit={handleSubmit} encType="multipart/form-data">
+				<label className="post-title-label">
 					Title
 					<input
+                        className="postform-input"
 						type="text"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
@@ -56,7 +57,7 @@ function PostFormPage() {
                             <p className="errors">{errors.title}</p>
                     )}
 				</label>
-                <div className="category-field">
+                <div className="post-category-field">
                     <div className="category-label">
                         <p>Category</p>
                     </div>
@@ -70,7 +71,7 @@ function PostFormPage() {
                         </select>
                     </div>
                 </div>
-                <div className="image-field">
+                <div className="post-image-field">
                     <div className="image-label">
                         <p>Add An Image</p>
                     </div>
@@ -80,16 +81,17 @@ function PostFormPage() {
                         onChange={(e) => setImage(e.target.files[0])}
                     />
                 </div>
-				<label className="content-label">
+				<label className="post-content-label">
 					Content
 					<textarea
+                        className="postform-textarea"
 						type="text"
 						value={content}
 						onChange={(e) => setContent(e.target.value)}
 						required
 					/>
 				</label>
-				<label className="location-label">
+				<label className="post-location-label">
 					Location
 					<input
 						type="text"

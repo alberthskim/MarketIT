@@ -29,6 +29,7 @@ function LoginFormPage() {
 
   return (
     <div className="login-page-container">
+      <div><img className="market-logo-login" src="marketit-logo-login.png" alt="logo"/></div>
       <div className="form-area">
           <form className="login-form" onSubmit={handleSubmit}>
             {visible ? (

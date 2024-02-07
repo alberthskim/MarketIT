@@ -1,12 +1,12 @@
 .home-page-container {
     /* border: 1px solid red; */
-    padding: 5vh;
+    padding: 2rem;
 }
 
 .post-button {
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .post-contents {
@@ -30,7 +30,7 @@
 }
 
 .post-images {
-    height: 100%;
+    height: 450px;
     width: 100%;
     object-fit: fit;
 }

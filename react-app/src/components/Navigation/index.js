@@ -13,13 +13,13 @@ function Navigation({ isLoaded }){
 	return (
 		<div className="navigation-container">
 		{isLoaded && sessionUser && (
-			<>
+			<div className='navigation-area'>
 				<div onClick={() => history.push('/home')}><img className="market-logo" src="marketit-logo.png" alt="logo"/></div>
-				<input style={{width: '50%'}} className="search-input" placeholder='Search For Keywords: Jobs, For Sale, Relationship' type="text" />
+				<input className="search-input" placeholder='Search For Keywords: Jobs, For Sale, Relationship' type="text" />
 				<div>
 					<ProfileButton user={sessionUser} />
 				</div>
-			</>
+			</div>
 			)}
 		</div>
 	);

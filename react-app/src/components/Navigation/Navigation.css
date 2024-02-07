@@ -1,6 +1,6 @@
 .profile-dropdown {
   position: absolute;
-  right: 1px;
+  right: 24px;
   padding: 5px;
   border: 1px solid black;
   z-index: 100;
@@ -12,12 +12,20 @@
   cursor: pointer;
 }
 
+.search-input {
+  width: 50%;
+  padding: .5rem 1rem;
+  border-radius: 12px;
+  border: none;
+}
+
 .hidden {
   display: none;
 }
 
-.navigation-container {
+.navigation-area {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   background-color: #31c48d;
   padding: 1.5rem;

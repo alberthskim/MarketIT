@@ -34,6 +34,7 @@ function SignupFormPage() {
 
   return (
     <div className="sign-up-container">
+      <div><img className="market-logo-login" src="marketit-logo-login.png" alt="logo"/></div>
       <div className="signup-form-area">
 
       <form onSubmit={handleSubmit} className="signup-form">
