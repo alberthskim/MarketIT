@@ -14,9 +14,14 @@
 
 .search-input {
   width: 50%;
-  padding: .5rem 1rem;
+  padding: .7rem 1rem;
   border-radius: 12px;
   border: none;
+}
+
+.post-user-area {
+  display: flex;
+  align-items: center;
 }
 
 .hidden {

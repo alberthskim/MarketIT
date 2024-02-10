@@ -4,9 +4,20 @@
 }
 
 .post-button {
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
     margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    background-color: #31c48d;
+    border: #31c48d;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white
+}
+
+.post-button:hover {
+    cursor: pointer;
+    background-color: #79e8bf;
 }
 
 .post-contents {
@@ -22,6 +33,7 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     gap: .5rem;
 }
 
@@ -36,5 +48,16 @@
 }
 
 .message-button {
-    padding: .5rem;
+    padding: 1rem;
+    border: #31c48d;
+    border-radius: 5px;
+    background-color: #31c48d;
+    font: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.message-button:hover {
+    cursor: pointer;
+    background-color: #79e8bf;
 }

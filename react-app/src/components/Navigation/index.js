@@ -16,8 +16,9 @@ function Navigation({ isLoaded }){
 			<div className='navigation-area'>
 				<div onClick={() => history.push('/home')}><img className="market-logo" src="../../marketit-logo.png" alt="logo"/></div>
 				<input className="search-input" placeholder='Search For Keywords: Jobs, For Sale, Relationship' type="text" />
-				<div>
-					<ProfileButton user={sessionUser} />
+				<div className="post-user-area">
+					{/* <div onClick={() => history.push('/home')}><i class="fa fa-pencil-square-o"/></div> */}
+					<div><ProfileButton user={sessionUser} /></div>
 				</div>
 			</div>
 			)}
