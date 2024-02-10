@@ -47,7 +47,7 @@ function PostFormPage() {
 				<label className="post-title-label">
 					Title
 					<input
-                        className="postform-input"
+                        className="title-input"
 						type="text"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
@@ -62,7 +62,7 @@ function PostFormPage() {
                         <p>Category</p>
                     </div>
                     <div className="category-options">
-                        <select className="select-field" value={category} onChange={e => setCategory(e.target.value)}>
+                        <select className="category-select-field" value={category} onChange={e => setCategory(e.target.value)}>
                             <option value="For Sale">For Sale</option>
                             <option value="Jobs">Jobs</option>
                             <option value="Relationships">Relationships</option>
@@ -76,6 +76,7 @@ function PostFormPage() {
                         <p>Add An Image</p>
                     </div>
                     <input
+                        className="image-input"
                         type="file"
                         accept="image/*"
                         onChange={(e) => setImage(e.target.files[0])}
@@ -84,7 +85,7 @@ function PostFormPage() {
 				<label className="post-content-label">
 					Content
 					<textarea
-                        className="postform-textarea"
+                        className="content-textarea"
 						type="text"
 						value={content}
 						onChange={(e) => setContent(e.target.value)}
@@ -94,13 +95,14 @@ function PostFormPage() {
 				<label className="post-location-label">
 					Location
 					<input
+                        className="location-input"
 						type="text"
 						value={location}
 						onChange={(e) => setLocation(e.target.value)}
 						required
 					/>
 				</label>
-				<button type="submit">Market It!</button>
+				<button className="post-submit-button" type="submit">Market It!</button>
 			</form>
 		</div>
 	);
