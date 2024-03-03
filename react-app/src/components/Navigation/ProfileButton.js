@@ -50,8 +50,8 @@ function ProfileButton({ user }) {
           <>
             <p>{user.username}</p>
             <p>{user.email}</p>
-            <button onClick={() => history.push('/manage-posts')}>Manage Posts</button>
-            <button onClick={handleLogout}>Log Out</button>
+            <button className="manage-posts-button" onClick={() => history.push('/manage-posts')}>Manage Posts</button>
+            <button className="logout-button" onClick={handleLogout}>Log Out</button>
           </>
         ) : (
           <>

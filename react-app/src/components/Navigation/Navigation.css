@@ -1,10 +1,13 @@
 .profile-dropdown {
   position: absolute;
   right: 24px;
-  padding: 5px;
+  padding: 1rem;
   border: 1px solid black;
   z-index: 100;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
 .market-logo {

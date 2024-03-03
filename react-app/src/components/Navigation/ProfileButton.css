@@ -8,3 +8,13 @@
 .profile-button:hover {
     cursor: pointer;
 }
+
+.manage-posts-button, .logout-button {
+    padding: 10px 20px;
+    background-color: #31c48d;
+    border: 1px solid #31c48d;
+    color: white;
+    /* font-size: 16px; */
+    border-radius: 6px;
+    cursor: pointer;
+}
