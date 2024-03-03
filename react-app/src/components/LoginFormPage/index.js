@@ -24,7 +24,9 @@ function LoginFormPage() {
   };
 
   const toggleToInput = () => {
-    setVisible(!visible)
+    if(email) {
+      setVisible(!visible)
+    }
   }
 
   return (
@@ -64,8 +66,8 @@ function LoginFormPage() {
                     autoFocus
                   />
                   {/* {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))} */}
+                  <p key={idx}>{error}</p>
+                  ))} */}
                 </label>
                 <label className="password-input">
                   <input
@@ -77,9 +79,9 @@ function LoginFormPage() {
                     required
                     autoFocus
                   />
-                  {/* {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))} */}
+                  {errors.map((error, idx) => (
+                  <p key={idx}>{error}</p>
+                  ))}
                 </label>
                 <button className="continue-button" type="submit" onClick={handleSubmit}>
                 Continue
