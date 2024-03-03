@@ -1,8 +1,12 @@
 import { useHistory } from "react-router-dom";
 import "./landingpage.css"
+import { useSelector } from "react-redux";
 
 function LandingPage() {
     const history = useHistory();
+    const sessionUser = useSelector((state) => state.session.user)
+
+    if (sessionUser) history.push('/home');
 
     return (
         <div className="landing-container">

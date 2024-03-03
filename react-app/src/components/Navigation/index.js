@@ -12,17 +12,15 @@ function Navigation({ isLoaded }){
 
 	return (
 		<div className="navigation-container">
-			{/* <div className="marketIt">
-				<NavLink exact to='/home'>MarketIt</NavLink>
-			</div> */}
-			{isLoaded && sessionUser && (
-			<>
-				<div onClick={() => history.push('/home')}>MarketIt Logo</div>
-				<button className="post-button" onClick={() => history.push('/posts/new')}>Create Post</button>
-				<div>
-					<ProfileButton user={sessionUser} />
+		{isLoaded && sessionUser && (
+			<div className='navigation-area'>
+				<div onClick={() => history.push('/home')}><img className="market-logo" src="../../marketit-logo.png" alt="logo"/></div>
+				<input className="search-input" placeholder='Search For Keywords: Jobs, For Sale, Relationship' type="text" />
+				<div className="post-user-area">
+					{/* <div onClick={() => history.push('/home')}><i class="fa fa-pencil-square-o"/></div> */}
+					<div><ProfileButton user={sessionUser} /></div>
 				</div>
-			</>
+			</div>
 			)}
 		</div>
 	);

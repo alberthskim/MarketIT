@@ -24,11 +24,14 @@ function LoginFormPage() {
   };
 
   const toggleToInput = () => {
-    setVisible(!visible)
+    if(email) {
+      setVisible(!visible)
+    }
   }
 
   return (
     <div className="login-page-container">
+      <div><img className="market-logo-login" src="marketit-logo-login.png" alt="logo"/></div>
       <div className="form-area">
           <form className="login-form" onSubmit={handleSubmit}>
             {visible ? (
@@ -63,8 +66,8 @@ function LoginFormPage() {
                     autoFocus
                   />
                   {/* {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))} */}
+                  <p key={idx}>{error}</p>
+                  ))} */}
                 </label>
                 <label className="password-input">
                   <input
@@ -76,9 +79,9 @@ function LoginFormPage() {
                     required
                     autoFocus
                   />
-                  {/* {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))} */}
+                  {errors.map((error, idx) => (
+                  <p key={idx}>{error}</p>
+                  ))}
                 </label>
                 <button className="continue-button" type="submit" onClick={handleSubmit}>
                 Continue
