@@ -1,0 +1,24 @@
+.manage-post-container {
+    padding: 2.5rem 16rem;
+}
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.edit-post-button, .delete-post-button {
+    padding: 1rem 2rem;
+    background-color: #31c48d;
+    border: #31c48d;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white
+}
+
+.edit-post-button:hover, .delete-post-button:hover {
+    cursor: pointer;
+    background-color: #79e8bf;
+}

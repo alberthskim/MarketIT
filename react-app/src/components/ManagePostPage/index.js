@@ -1,9 +1,12 @@
 import React, {useEffect} from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePostThunk, getAllPostThunk } from "../../store/post";
+import './ManagePostPage.css';
 
 function ManagePost() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const user = useSelector(state => state.session.user)
     const posts = Object.values(useSelector(state => state.posts))
     const usersPost = posts.filter(post => post.userId === user.id)
@@ -11,6 +14,8 @@ function ManagePost() {
     useEffect(() => {
         dispatch(getAllPostThunk())
     }, [dispatch])
+
+    if (!user) history.push('/')
 
     return (
         <div className="manage-post-container">
@@ -22,8 +27,8 @@ function ManagePost() {
                         <p>{post.categories}</p>
                         <p>{post.content}</p>
                         <p>{post.location}</p>
-                        <button onClick={() => alert("In working progress")}>Edit Post</button>
-                        <button onClick={() => dispatch(deletePostThunk(post.id))}>Delete Post</button>
+                        <button className="edit-post-button" onClick={() => alert("In working progress")}>Edit Post</button>
+                        <button className="delete-post-button" onClick={() => dispatch(deletePostThunk(post.id))}>Delete Post</button>
                     </div>
                 ))}
             </div>
