@@ -4,6 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import SignupFormModal from "../SignupFormModal";
 import { useHistory } from "react-router-dom";
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button className="profile-button" onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
       <ul className={ulClassName} ref={ulRef}>
@@ -49,8 +50,8 @@ function ProfileButton({ user }) {
           <>
             <p>{user.username}</p>
             <p>{user.email}</p>
-            <button onClick={() => history.push('/manage-posts')}>Manage Posts</button>
-            <button onClick={handleLogout}>Log Out</button>
+            <button className="manage-posts-button" onClick={() => history.push('/manage-posts')}>Manage Posts</button>
+            <button className="logout-button" onClick={handleLogout}>Log Out</button>
           </>
         ) : (
           <>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPostThunk } from "../../store/post";
 import { useHistory } from "react-router-dom";
+import "./PostFormPage.css"
 
 function PostFormPage() {
 	const dispatch = useDispatch();
@@ -40,12 +41,13 @@ function PostFormPage() {
     if(!user) history.push('/login')
 
 	return (
-		<>
-			<h1>What would you like to market today?</h1>
-			<form onSubmit={handleSubmit} encType="multipart/form-data">
-				<label>
+		<div className="postform-page">
+			<h1 className="form-title">What would you like to market today?</h1>
+			<form className="post-form" onSubmit={handleSubmit} encType="multipart/form-data">
+				<label className="post-title-label">
 					Title
 					<input
+                        className="title-input"
 						type="text"
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
@@ -55,12 +57,12 @@ function PostFormPage() {
                             <p className="errors">{errors.title}</p>
                     )}
 				</label>
-                <div className="category-field">
+                <div className="post-category-field">
                     <div className="category-label">
                         <p>Category</p>
                     </div>
                     <div className="category-options">
-                        <select className="select-field" value={category} onChange={e => setCategory(e.target.value)}>
+                        <select className="category-select-field" value={category} onChange={e => setCategory(e.target.value)}>
                             <option value="For Sale">For Sale</option>
                             <option value="Jobs">Jobs</option>
                             <option value="Relationships">Relationships</option>
@@ -69,37 +71,40 @@ function PostFormPage() {
                         </select>
                     </div>
                 </div>
-                <div className="image-field">
+                <div className="post-image-field">
                     <div className="image-label">
                         <p>Add An Image</p>
                     </div>
                     <input
+                        className="image-input"
                         type="file"
                         accept="image/*"
                         onChange={(e) => setImage(e.target.files[0])}
                     />
                 </div>
-				<label>
+				<label className="post-content-label">
 					Content
 					<textarea
+                        className="content-textarea"
 						type="text"
 						value={content}
 						onChange={(e) => setContent(e.target.value)}
 						required
 					/>
 				</label>
-				<label>
+				<label className="post-location-label">
 					Location
 					<input
+                        className="location-input"
 						type="text"
 						value={location}
 						onChange={(e) => setLocation(e.target.value)}
 						required
 					/>
 				</label>
-				<button type="submit">Market It!</button>
+				<button className="post-submit-button" type="submit">Market It!</button>
 			</form>
-		</>
+		</div>
 	);
 }
 

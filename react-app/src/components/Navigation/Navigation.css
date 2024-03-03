@@ -1,16 +1,40 @@
 .profile-dropdown {
   position: absolute;
-  right: 1px;
-  padding: 5px;
-  border: 1px solid black
+  right: 24px;
+  padding: 1rem;
+  border: 1px solid black;
+  z-index: 100;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.market-logo {
+  width: 150px;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 50%;
+  padding: .7rem 1rem;
+  border-radius: 12px;
+  border: none;
+}
+
+.post-user-area {
+  display: flex;
+  align-items: center;
 }
 
 .hidden {
   display: none;
 }
 
-
-.navigation-container {
+.navigation-area {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  background-color: #31c48d;
+  padding: 1.5rem;
 }

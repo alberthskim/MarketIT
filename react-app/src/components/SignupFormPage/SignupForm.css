@@ -3,9 +3,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 15rem;
+    padding-top: 5rem;
+    gap: 8rem;
 }
 
+.market-logo-login {
+    width: 100px;
+    border-radius: 50%;
+    height: 100px;
+}
 
 .signup-form {
     /* border: 1px solid red; */
