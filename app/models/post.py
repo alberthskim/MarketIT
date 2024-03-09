@@ -27,5 +27,6 @@ class Post(db.Model):
             "title": self.title,
             "content": self.content,
             "location": self.location,
-            "createdAt": self.created_at
+            "createdAt": self.created_at,
+            # "postInfo": [info.to_dict() for info in self.user]
         }
